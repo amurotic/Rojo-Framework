@@ -10,4 +10,4 @@ It is PLANNED to have a bunch of "fun and quirky" modules to help with my own de
 ANDDDDD I can't think of anything else right now so yeah. At least this isn't 100% vibecoded like half the games on ROBLOX.
 
 Like subscribe and hit that bell icon.
--# Intended for me and my friends
+(Intended for me and my friends)
