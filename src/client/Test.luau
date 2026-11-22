@@ -9,8 +9,7 @@ Test.Start = function()
     
     print("????")
 
-    shared.Input.CreateBind("JumpTest", {Enum.KeyCode.E}, true, function()
-        print("active   ")
+    shared.Input.CreateBind("Kill", {Enum.KeyCode.E}, true, function()
         shared.Humanoid.Health = 0
     end)
 
