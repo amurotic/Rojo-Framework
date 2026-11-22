@@ -1,9 +1,13 @@
 # Project place file
-# /Shower Simulator.rbxlx 👀
 /*.rbxl
 
 # Roblox Studio lock files
 /*.rbxlx.lock
 /*.rbxl.lock
 
+# Rojo src map and my own stuff
 sourcemap.json
+TODO.txt
+
+# Random stuff
+/.vscode
