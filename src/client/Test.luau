@@ -9,7 +9,7 @@ Test.Start = function()
     
     print("????")
 
-    shared.Input.CreateBind("Kill", {Enum.KeyCode.E}, true, function()
+    shared.Input.CreateBind("Kill", {Enum.UserInputType.MouseButton1}, true, function()
         shared.Humanoid.Health = 0
     end)
 

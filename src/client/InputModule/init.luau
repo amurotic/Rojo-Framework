@@ -2,15 +2,24 @@ local UserInputService = game:GetService("UserInputService")
 local Mouse = shared.Player:GetMouse()
 
 -- Things to add
--- Keyboard Events
--- Mouse X/Y Pos/Events
--- Gamepad Joystick X/Y Pos/Events
--- Touch Screen Events
+-- Keyboard Events ✅
+-- Mouse X/Y Pos/Events ✅
+-- Gamepad Joystick X/Y Pos/Events ✅
+-- Touch X/Y and On-Screen Buttons
 
 local DEFAULT_BINDS = require(script.DefaultBinds)
 
 local InputModule = {}
-shared.Input = {}
+shared.Input = {
+    MouseX = 0,
+    MouseY = 0,
+    
+    LeftJoystickX = 0,
+    LeftJoystickY = 0,
+    RightJoystickX = 0,
+    RightJoystickY = 0,
+}
+
 shared.Input.Binds = DEFAULT_BINDS
 
 -- Get the status of a bind
@@ -73,7 +82,7 @@ shared.Input.SetBindActive = function(bind, active)
     bind.Active = active
 end
 
--- Creates a brand new bind with the provided name, inputs, active state, sends it to shared.Inputs and then returns it
+-- Creates a brand new bind with the provided name, inputs, active state, sends it to shared.Input.Binds and then returns it
 -- @param string name The name of the bind.
 -- @param any inputs The input(s) that the bind activates with. (Optional)
 -- @param boolean active The bind's active state. (true = enabled) (Optional)
@@ -106,6 +115,7 @@ end
 -- [bind].BindUp
 
 InputModule.Start = function()
+    -- Handle inputs
     UserInputService.InputBegan:Connect(function(input)
         if not UserInputService:GetFocusedTextBox() then
             -- Go through all binds to sese if this KeyCode is active in one of them
@@ -113,7 +123,7 @@ InputModule.Start = function()
                 if not Bind.Active then continue end
                 -- In case some binds have the same input for some god forsaken reason
                 task.spawn(function()
-                    if Bind.Inputs and table.find(Bind.Inputs, input.KeyCode) then
+                    if Bind.Inputs and table.find(Bind.Inputs, input.KeyCode) or table.find(Bind.Inputs, input.UserInputType) then
                         if Bind.BindDown then
                             Bind.Pressing = true
                             Bind.BindDown()
@@ -129,6 +139,24 @@ InputModule.Start = function()
                 end)
             end
         end
+    end)
+
+    -- Update Joystick values
+    UserInputService.InputChanged:Connect(function(input)
+        -- Update controller X/Y
+        if input.KeyCode == Enum.KeyCode.Thumbstick1 then
+            shared.Input.LeftJoystickX, shared.Input.LeftJoystickY = input.Position.X, input.Position.Y
+        end
+
+        if input.KeyCode == Enum.KeyCode.Thumbstick2 then
+            shared.Input.RightJoystickX, shared.Input.RightJoystickY = input.Position.X, input.Position.Y
+        end
+    end)
+
+    -- Update shared.Input.MouseX and shared.Input.MouseY
+    Mouse.Move:Connect(function()
+        shared.Input.MouseX = Mouse.X
+        shared.Input.MouseY = Mouse.Y
     end)
 end
 
