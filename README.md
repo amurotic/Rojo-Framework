@@ -1,6 +1,6 @@
 # Hi
 
-[My ROBLOX avatar horribly deformed by a spinning emote](https://raw.githubusercontent.com/amurotic/md-hosting/refs/heads/main/Rojo-Framework/avatar.webp)
+![My ROBLOX avatar horribly deformed by a spinning emote](https://raw.githubusercontent.com/amurotic/md-hosting/refs/heads/main/Rojo-Framework/avatar.webp)
 
 This is the Rojo Framework Setup I use. 
 
