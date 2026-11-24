@@ -1,4 +1,7 @@
 # Hi
+
+[My ROBLOX avatar horribly deformed by a spinning emote](https://raw.githubusercontent.com/amurotic/md-hosting/refs/heads/main/Rojo-Framework/avatar.webp)
+
 This is the Rojo Framework Setup I use. 
 
 It is PLANNED to have a bunch of "fun and quirky" modules to help with my own development which currently includes:
