@@ -1,3 +1,5 @@
+-- Allows you to code UI elements through classes, meaning you can code something like a dropdown once and reuse it without ever re-openeing a code editor
+
 local UserInputService = game:GetService("UserInputService")
 local RunService = game:GetService("RunService")
 local PlayerGui = shared.Player:WaitForChild("PlayerGui")

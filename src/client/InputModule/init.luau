@@ -1,3 +1,5 @@
+-- Allows you to add binds, replacing having to add an InputBegan connection for every bind  
+
 local UserInputService = game:GetService("UserInputService")
 local Mouse = shared.Player:GetMouse()
 
@@ -5,7 +7,7 @@ local Mouse = shared.Player:GetMouse()
 -- Keyboard Events ✅
 -- Mouse X/Y Pos/Events ✅
 -- Gamepad Joystick X/Y Pos/Events ✅
--- Touch X/Y and On-Screen Buttons
+-- Touch X/Y
 
 local DEFAULT_BINDS = require(script.DefaultBinds)
 
@@ -18,6 +20,9 @@ shared.Input = {
     LeftJoystickY = 0,
     RightJoystickX = 0,
     RightJoystickY = 0,
+
+    TouchX = 0,
+    TouchY = 0,
 }
 
 shared.Input.Binds = DEFAULT_BINDS
@@ -151,6 +156,12 @@ InputModule.Start = function()
         if input.KeyCode == Enum.KeyCode.Thumbstick2 then
             shared.Input.RightJoystickX, shared.Input.RightJoystickY = input.Position.X, input.Position.Y
         end
+    end)
+
+    -- Update TouchX and TouchY
+    UserInputService.TouchMoved:Connect(function(input)
+        shared.Input.TouchX = input.Position.X
+        shared.Input.TouchY = input.Position.Y
     end)
 
     -- Update shared.Input.MouseX and shared.Input.MouseY
